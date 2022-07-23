@@ -33,6 +33,15 @@ app.post("/submit-form", (req, res) => {
     })
 })
 
+app.get("/users", (req, res) => {
+    let sqlSelect = "SELECT * from userInfo;";
+    con.query(sqlSelect, (err, result) => {
+        if (err) throw err;
+        //console.log(result);
+        res.send(result);
+    })
+})
+
 app.listen(3001, () => {
-    console.log("Sever is running on 3001");
+    console.log("Server is running on 3001");
 })
