@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class Display extends Component {
     constructor(props) {
         super(props);
@@ -25,13 +24,23 @@ class Display extends Component {
             })
         })
         //{ console.log(this.state.items) }
+        var x = document.getElementById('btn');
+        var y = document.getElementById('userData');
+        if (x.innerHTML == `Show Users`) {
+            x.innerHTML = `Hide Users`;
+            y.style.display = `block`;
+        }
+        else {
+            x.innerHTML = `Show Users`;
+            y.style.display = `none`;
+        }
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.handleChange}>Show Users</button>
-                <div className='m-3' >
+                <button id='btn' onClick={this.handleChange}>Show Users</button>
+                <div className='m-5' id='userData'>
                     <table className="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -50,6 +59,7 @@ class Display extends Component {
                             ))}
                         </tbody>
                     </table>
+                    <h2>Total Users: {this.state.items.length}</h2>
                 </div>
             </div>
         )
